@@ -27,6 +27,12 @@ body {
   flex-direction: column;
   align-items: center;
   overflow: hidden;
+  transition: all 0.4s;
+}
+
+.counter--limit {
+  background-color: rgb(222, 222, 222);
+  color: white;
 }
 
 .counter__title {
@@ -40,10 +46,15 @@ body {
   font-weight: 300;
 }
 
+.title--limit {
+  color: red;
+  text-shadow: 1px 2px 4px rgb(255, 255, 0);
+}
+
 .counter__value {
   font-size: 200px;
   color: rgb(67, 67, 67);
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .counter__reset-button {
@@ -55,7 +66,6 @@ body {
 
 .counter__reset-icon:hover {
   color: red;
-  color: rgb(255, 0, 0);
 }
 
 .counter__reset-icon {

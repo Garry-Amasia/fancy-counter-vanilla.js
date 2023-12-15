@@ -3,10 +3,26 @@ const decrementButtonEl = document.querySelector(".counter__button--decrease");
 const incrementButtonEl = document.querySelector(".counter__button--increase");
 const counterValue = document.querySelector(".counter__value");
 const resetButtonEl = document.querySelector(".counter__reset-button");
+const titleEl = document.querySelector(".counter__title");
 
 //RESET BUTTON
 resetButtonEl.addEventListener("click", () => {
+  //reset counter value to 0
   counterValue.textContent = 0;
+
+  //reset background-color and color
+  counterEl.classList.remove("counter--limit");
+  titleEl.classList.remove("title--limit");
+
+  //enable increment and decrement button
+  incrementButtonEl.disabled = false;
+  decrementButtonEl.disabled = false;
+
+  //reset counter title
+  titleEl.textContent = "Fancy Counter";
+
+  //unfocus(blur)
+  resetButtonEl.blur();
 });
 
 //increment function
@@ -24,11 +40,22 @@ const increment = () => {
   if (newValue > 5) {
     newValue = 5;
     //give visual indicator that limit has been reached
-    counterEl.style.backgroundColor = "yellow";
+    counterEl.classList.add("counter--limit");
+
+    //update counter title to say limit has been reached
+    titleEl.classList.add("title--limit");
+    titleEl.innerHTML = "LIMIT!! Buy <b>pro</b> to go beyond 5";
+
+    //disable increase and decrease button
+    incrementButtonEl.disabled = true;
+    decrementButtonEl.disabled = true;
   }
 
   //print on the screent
   counterValue.textContent = newValue;
+
+  //unfocus(blur)
+  resetButtonEl.blur();
 };
 
 // decrement function
@@ -49,6 +76,9 @@ const decrement = () => {
 
   //print on the screen
   counterValue.textContent = newValue;
+
+  //unfocus(blur)
+  resetButtonEl.blur();
 };
 
 // (+) BUTTON
